@@ -43,6 +43,16 @@ function setup() {
   // scaling can also be done like so:
   cat.scale.set(2, 2);
 
+  // center rotation anchor
+  cat.anchor.x = 0.5;
+  cat.anchor.y = 0.5;
+
+  // there is also function for setting anchor
+  // cat.anchor.set(0.5, 0.5);
+
+  // rotate image 90deg clockwise
+  cat.rotation = Math.PI / 2;
+
   //Add the cat to the stage
   app.stage.addChild(cat);
 }

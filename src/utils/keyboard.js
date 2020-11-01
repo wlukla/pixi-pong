@@ -9,7 +9,7 @@ export const createKeyboardHandler = (value) => {
   const downHandler = (e) => {
     e.preventDefault();
 
-    if (e.key === key.value && !key.isPressed && key.onPress) {
+    if (e.code === key.value && !key.isPressed && key.onPress) {
       key.onPress();
       key.isPressed = true;
     }
@@ -18,7 +18,7 @@ export const createKeyboardHandler = (value) => {
   const upHandler = (e) => {
     e.preventDefault();
 
-    if (e.key === key.value && key.isPressed && key.onRelease) {
+    if (e.code === key.value && key.isPressed && key.onRelease) {
       key.onRelease();
       key.isPressed = false;
     }

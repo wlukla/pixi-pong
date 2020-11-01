@@ -18,4 +18,8 @@ export default class Player {
 
     this.body = rectangle;
   }
+
+  update() {
+    this.body.y += this.vy;
+  }
 }

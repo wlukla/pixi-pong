@@ -13,7 +13,9 @@ export default class Player {
   init() {
     const rectangle = new Graphics();
     rectangle.beginFill(0xFFFFFF);
-    rectangle.drawRect(this.x, this.y, this.width, this.height);
+    rectangle.drawRect(0, 0, this.width, this.height);
+    rectangle.x = this.x;
+    rectangle.y = this.y;
     rectangle.endFill();
 
     this.body = rectangle;

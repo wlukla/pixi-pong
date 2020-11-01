@@ -7,9 +7,11 @@
 
 ### Game: PONG
 - [x] create player rect
-- [ ] add player moving
-- [ ] add second player
-- [ ] create ball
-- [ ] create ball moving logic
+- [x] add player moving
+- [x] add second player
+- [x] create ball
+- [x] create ball moving logic
+- [ ] add ball bouncing from players
+- [ ] add ball bouncing from walls
 - [ ] create score text
 - [ ] add score text logic

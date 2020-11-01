@@ -19,11 +19,13 @@ app.loader
   .add('catImage', imgUrl)
   .load(setup);
 
+let cat;
+
 //This `setup` function will run when the image has loaded
 function setup() {
 
   //Create the cat sprite
-  let cat = new PIXI.Sprite(app.loader.resources.catImage.texture);
+  cat = new PIXI.Sprite(app.loader.resources.catImage.texture);
 
   // set position on canvas
   cat.position.set(100, 100)
@@ -55,4 +57,10 @@ function setup() {
 
   //Add the cat to the stage
   app.stage.addChild(cat);
+
+  app.ticker.add(delta => gameLoop(delta));
+}
+
+function gameLoop() {
+  cat.x += 1;
 }

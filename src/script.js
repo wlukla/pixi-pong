@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js';
 
+import { createKeyboardHandler } from './keyborad';
+
 //Create a Pixi Application
 let app = new PIXI.Application({ 
   width: 400, 
@@ -19,7 +21,7 @@ app.loader
   .add('catImage', imgUrl)
   .load(setup);
 
-let cat;
+let cat, state;
 
 //This `setup` function will run when the image has loaded
 function setup() {
@@ -58,9 +60,38 @@ function setup() {
   //Add the cat to the stage
   app.stage.addChild(cat);
 
+  state = play;
+
   app.ticker.add(delta => gameLoop(delta));
+
+  cat.vx = 0;
+  cat.vy = 0;
+
+  const up = createKeyboardHandler("ArrowUp");
+  const down = createKeyboardHandler("ArrowDown");
+  const left = createKeyboardHandler("ArrowLeft");
+  const right = createKeyboardHandler("ArrowRight");
+
+  down.onPress = () => cat.vy = 1;
+  down.onRelease = () => cat.vy = 0;
+
+  up.onPress = () => cat.vy = -1;
+  up.onRelease = () => cat.vy = 0;
+
+  left.onPress = () => cat.vx = -1;
+  left.onRelease = () => cat.vx = 0;
+
+  right.onPress = () => cat.vx = 1;
+  right.onRelease = () => cat.vx = 0;
 }
 
-function gameLoop() {
-  cat.x += 1;
+function gameLoop(delta) {
+
+  state(delta)
+}
+
+function play() {
+  // change cat position according to velocity
+  cat.x += cat.vx;
+  cat.y += cat.vy;
 }
